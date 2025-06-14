@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#00C853">
+    <title>Read Space - Library Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="images/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+</head>
+<body>
+    <div id="app">
+        <!-- Content will be dynamically loaded here -->
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Templates -->
+    <template id="login-template">
+        <div class="login-container">
+            <div class="login-card">
+                <h1>Login</h1>
+                <p class="welcome-text">Welcome back! Log in to borrow books, reserve rooms, and explore your library – anytime, anywhere.</p>
+                
+                <div class="tabs">
+                    <button class="tab active" data-tab="login">Login</button>
+                    <button class="tab" data-tab="register">Register</button>
+                </div>
+                
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-password">
+                                <img src="images/eye.svg" alt="Show password">
+                            </button>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+                
+                <div class="social-login">
+                    <p>or connect with</p>
+                    <div class="social-buttons">
+                        <button class="social-btn facebook">
+                            <img src="images/facebook.svg" alt="Facebook">
+                        </button>
+                        <button class="social-btn instagram">
+                            <img src="images/instagram.svg" alt="Instagram">
+                        </button>
+                        <button class="social-btn google">
+                            <img src="images/google.svg" alt="Google">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="login-illustration">
+                <img src="images/books-illustration.svg" alt="Books illustration">
+            </div>
+        </div>
+    </template>
+
+    <template id="student-dashboard-template">
+        <div class="dashboard-container">
+            <header class="dashboard-header">
+                <h1>Welcome back, <span id="user-name">Sara</span>! <span class="wave-emoji">👋</span></h1>
+                <div class="header-actions">
+                    <button class="icon-btn">
+                        <img src="images/edit.svg" alt="Edit">
+                    </button>
+                    <button class="icon-btn">
+                        <img src="images/bell.svg" alt="Notifications">
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="quick-info-container">
+                    <div class="quick-tip">
+                        <div class="quick-tip-icon">
+                            <img src="images/room.svg" alt="Room">
+                        </div>
+                        <div class="quick-tip-content">
+                            <h3>Quick Tip</h3>
+                            <p>3 Rooms are available for today- reserve now!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="latest-activity">
+                        <div class="latest-activity-icon">
+                            <img src="images/book.svg" alt="Book">
+                        </div>
+                        <div class="latest-activity-content">
+                            <h3>Latest Activity</h3>
+                            <p>You just borrowed: Murder on the Orient Express</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="usage-stats">
+                    <h2>Usage Stats</h2>
+                    <div class="progress-container">
+                        <div class="progress-label">
+                            <span>Pages Progress</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="borrowed-books-gauge">
+                        <div class="gauge">
+                            <div class="gauge-body">
+                                <div class="gauge-fill"></div>
+                                <div class="gauge-cover">
+                                    <div class="gauge-indicator"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="borrowed-books-count">
+                            <h3>Borrowed Books</h3>
+                            <p class="count">22</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="recommended-books">
+                <h2>Recommended Books</h2>
+                <table class="books-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Availability</th>
+                            <th>Cover</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Fundamentals of Database Systems</td>
+                            <td>Not Available Currently</td>
+                            <td><img src="images/books/database-systems.jpg" alt="Book cover" class="book-cover-small"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Harry Potter and the Sorcerer's Stone</td>
+                            <td>Available</td>
+                            <td><img src="images/books/harry-potter.jpg" alt="Book cover" class="book-cover-small"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="profile-section">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <img src="images/avatar.jpg" alt="User avatar">
+                    </div>
+                    <div class="profile-info">
+                        <h3>Sara Mohel</h3>
+                        <p>College Student</p>
+                    </div>
+                </div>
+
+                <div class="calendar-widget">
+                    <div class="calendar-header">
+                        <button class="calendar-nav prev">&lt;</button>
+                        <h3>May 2025</h3>
+                        <button class="calendar-nav next">&gt;</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <!-- Calendar days will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="due-dates">
+                    <h3>Due date for books today</h3>
+                    <div class="due-book">
+                        <p>Pride and Prejudice</p>
+                        <span class="due-time">09:30 AM</span>
+                    </div>
+                    <h3>Due soon</h3>
+                    <div class="due-book">
+                        <p>An Introduction to Database Systems</p>
+                        <span class="due-time">10:30 AM</span>
+                    </div>
+                    <div class="due-book">
+                        <p>The Lord of the Rings</p>
+                        <span class="due-time">12:30 PM</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </template>
+
+    <template id="sidebar-template">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="images/logo.svg" alt="Read Space">
+                <h1>Read Space</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li data-page="dashboard" class="nav-item">
+                        <img src="images/dashboard.svg" alt="Dashboard">
+                        <span>Student Dashboard</span>
+                    </li>
+                    <li data-page="reserve-room" class="nav-item">
+                        <img src="images/room.svg" alt="Reserve Room">
+                        <span>Reserve Room</span>
+                    </li>
+                    <li data-page="borrow-request" class="nav-item">
+                        <img src="images/borrow.svg" alt="Borrow Request">
+                        <span>Borrowed Request</span>
+                    </li>
+                    <li data-page="search-books" class="nav-item">
+                        <img src="images/search.svg" alt="Search Books">
+                        <span>Search Books</span>
+                    </li>
+                    <li data-page="return-book" class="nav-item">
+                        <img src="images/return.svg" alt="Return Book">
+                        <span>Return Book</span>
+                    </li>
+                    <li data-page="update-profile" class="nav-item">
+                        <img src="images/profile.svg" alt="Update Profile">
+                        <span>Update Profile</span>
+                    </li>
+                    <li data-page="settings" class="nav-item">
+                        <img src="images/settings.svg" alt="Settings">
+                        <span>Settings</span>
+                    </li>
+                    <li data-page="logout" class="nav-item">
+                        <img src="images/logout.svg" alt="Log out">
+                        <span>Log out</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </template>
+
+    <template id="search-books-template">
+        <div class="search-books-container">
+            <div class="search-header">
+                <div class="search-dropdown">
+                    <select id="search-category">
+                        <option value="all">All</option>
+                        <option value="title">Title</option>
+                        <option value="author">Author</option>
+                        <option value="isbn">ISBN</option>
+                    </select>
+                </div>
+                <div class="search-input-container">
+                    <input type="text" id="search-input" placeholder="Type the name of book or Author...">
+                    <button class="search-btn">
+                        <img src="images/search.svg" alt="Search">
+                    </button>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn">
+                        <img src="images/heart.svg" alt="Favorites">
+                    </button>
+                    <button class="icon-btn">
+                        <img src="images/bell.svg" alt="Notifications">
+                    </button>
+                    <button class="icon-btn">
+                        <img src="images/cart.svg" alt="Cart">
+                    </button>
+                    <button class="icon-btn">
+                        <img src="images/user.svg" alt="Profile">
+                    </button>
+                </div>
+            </div>
+
+            <div class="books-section">
+                <h2>Trending Books</h2>
+                <div class="books-grid">
+                    <!-- Books will be dynamically added here -->
+                </div>
+            </div>
+
+            <div class="books-section">
+                <h2>Kids</h2>
+                <div class="books-grid">
+                    <!-- Kids books will be dynamically added here -->
+                </div>
+            </div>
+
+            <div class="books-section">
+                <h2>Text Books</h2>
+                <div class="books-grid">
+                    <!-- Text books will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="book-card-template">
+        <div class="book-card">
+            <img src="/placeholder.svg" alt="Book cover" class="book-cover">
+            <div class="book-info">
+                <h3 class="book-title"></h3>
+                <p class="book-author"></p>
+                <div class="book-rating">
+                    <div class="stars"></div>
+                    <span class="rating-value"></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="book-detail-template">
+        <div class="book-detail-container">
+            <div class="back-button">
+                <button class="btn-back">
+                    <img src="images/arrow-left.svg" alt="Back">
+                    <span>Back to results</span>
+                </button>
+            </div>
+
+            <div class="book-detail-content">
+                <div class="book-cover-container">
+                    <img src="/placeholder.svg" alt="Book cover" class="book-detail-cover">
+                </div>
+
+                <div class="book-info-container">
+                    <h1 class="book-detail-title"></h1>
+                    <p class="book-detail-authors"></p>
+                    <p class="book-detail-year"></p>
+                    <p class="book-detail-edition"></p>
+
+                    <div class="book-ratings">
+                        <div class="stars"></div>
+                        <span class="ratings-count"></span>
+                        <span class="reading-count"></span>
+                        <span class="read-count"></span>
+                    </div>
+
+                    <div class="book-availability">
+                        <h3>Availability</h3>
+                        <div class="availability-option">
+                            <span class="availability-icon hard-copy"></span>
+                            <span>Hard Copy</span>
+                        </div>
+                        <div class="availability-option">
+                            <span class="availability-icon e-book"></span>
+                            <span>E-Book</span>
+                        </div>
+                    </div>
+
+                    <div class="book-status">
+                        <h3>Status</h3>
+                        <div class="status-indicator"></div>
+                    </div>
+
+                    <div class="book-actions">
+                        <button class="btn btn-primary btn-borrow">BORROW</button>
+                        <button class="btn btn-secondary btn-read-now">Read Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-tabs">
+                <div class="tabs">
+                    <button class="tab active" data-tab="overview">Overview</button>
+                    <button class="tab" data-tab="author">Author</button>
+                    <button class="tab" data-tab="review">Review</button>
+                </div>
+
+                <div class="tab-content" id="overview-tab">
+                    <p class="book-description"></p>
+                </div>
+
+                <div class="tab-content hidden" id="author-tab">
+                    <div class="author-info">
+                        <img src="/placeholder.svg" alt="Author" class="author-image">
+                        <div class="author-details">
+                            <h3 class="author-name"></h3>
+                            <p class="author-bio"></p>
+                        </div>
+                    </div>
+                    <div class="other-books">
+                        <h3>Other Books</h3>
+                        <div class="other-books-grid">
+                            <!-- Other books will be added here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content hidden" id="review-tab">
+                    <div class="reviews-container">
+                        <!-- Reviews will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="reservation-template">
+        <div class="reservation-container">
+            <h1>Reserve Room</h1>
+            <div class="room-selection">
+                <h2>Available Rooms</h2>
+                <div class="rooms-grid">
+                    <!-- Rooms will be dynamically added here -->
+                </div>
+            </div>
+
+            <div class="reservation-form-container">
+                <h2>Reservation Details</h2>
+                <form id="reservation-form">
+                    <div class="form-group">
+                        <label for="room-name">Room</label>
+                        <input type="text" id="room-name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservation-date">Date</label>
+                        <input type="date" id="reservation-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservation-time">Time</label>
+                        <input type="time" id="reservation-time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservation-duration">Duration (hours)</label>
+                        <input type="number" id="reservation-duration" min="1" max="4" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservation-purpose">Purpose</label>
+                        <textarea id="reservation-purpose" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Reserve Now</button>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <template id="reservation-confirmed-template">
+        <div class="confirmation-container">
+            <div class="confirmation-icon">
+                <img src="images/check-circle.svg" alt="Success">
+            </div>
+            <h1>Reservation Confirmed!</h1>
+            <div class="confirmation-details">
+                <p><strong>Room:</strong> <span id="confirmed-room">Meeting Room A</span></p>
+                <p><strong>Date:</strong> <span id="confirmed-date">June 12, 2025</span></p>
+                <p><strong>Time:</strong> <span id="confirmed-time">10:00 AM</span></p>
+            </div>
+            <button class="btn btn-primary" id="view-reservations">View My Reservations</button>
+        </div>
+    </template>
+
+    <template id="return-book-template">
+        <div class="return-book-container">
+            <h1>Return Book</h1>
+            <h2>BOOK CARDS</h2>
+
+            <div class="book-cards-container">
+                <!-- Book cards will be dynamically added here -->
+            </div>
+        </div>
+    </template>
+
+    <template id="return-book-card-template">
+        <div class="return-book-card">
+            <div class="return-book-cover">
+                <img src="/placeholder.svg" alt="Book cover">
+            </div>
+            <div class="return-book-info">
+                <p><strong>Title:</strong> <span class="return-book-title"></span></p>
+                <p><strong>Format:</strong> <span class="return-book-format"></span></p>
+                <p><strong>Due:</strong> <span class="return-book-due"></span></p>
+                <div class="return-book-status"></div>
+            </div>
+            <div class="return-book-actions">
+                <button class="btn btn-danger btn-return">Return</button>
+                <button class="btn btn-success btn-renew">Renew</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="update-profile-template">
+        <div class="update-profile-container">
+            <h1>Update profile</h1>
+            <form id="update-profile-form">
+                <div class="form-section">
+                    <h2>Email</h2>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" value="username@collegename.ac.in" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Name</h2>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" value="John Starkey" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Password</h2>
+                    <div class="form-group">
+                        <label for="update-password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="update-password" value="********" required>
+                            <button type="button" class="toggle-password">
+                                <img src="images/eye.svg" alt="Show password">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Contact</h2>
+                    <div class="form-group">
+                        <label for="contact">Contact NO.</label>
+                        <input type="tel" id="contact" value="+971586361986" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-block">Save changes</button>
+            </form>
+        </div>
+    </template>
+
+    <template id="profile-updated-template">
+        <div class="confirmation-container">
+            <div class="confirmation-icon">
+                <img src="images/check-circle.svg" alt="Success">
+            </div>
+            <h1>The profile has been updated!</h1>
+        </div>
+    </template>
+
+    <template id="librarian-dashboard-template">
+        <div class="librarian-dashboard-container">
+            <h1>Librarian Dashboard</h1>
+            
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-icon users-icon">
+                        <img src="images/users.svg" alt="Users">
+                    </div>
+                    <div class="stat-info">
+                        <p>Logged in user</p>
+                        <h2>10</h2>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon books-icon">
+                        <img src="images/books.svg" alt="Books">
+                    </div>
+                    <div class="stat-info">
+                        <p>Total Books</p>
+                        <h2>232</h2>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon members-icon">
+                        <img src="images/members.svg" alt="Members">
+                    </div>
+                    <div class="stat-info">
+                        <p>Total Members</p>
+                        <h2>1234</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reports-section">
+                <h2>Reports</h2>
+                <div class="report-tabs">
+                    <button class="report-tab active" data-period="today">Today</button>
+                    <button class="report-tab" data-period="week">Last Week</button>
+                    <button class="report-tab" data-period="month">Last Month</button>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="activity-chart"></canvas>
+                </div>
+            </div>
+            
+            <div class="tables-container">
+                <div class="members-table-container">
+                    <h2>New Members</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Roll Number</th>
+                                <th>ID</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="members-table-body">
+                            <!-- Members will be dynamically added here -->
+                        </tbody>
+                    </table>
+                    <button class="btn btn-primary btn-sm">See All</button>
+                </div>
+                
+                <div class="books-table-container">
+                    <h2>New Books</h2>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th>ID</th>
+                                <th>Added Date</th>
+                                <th>Expiry Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="books-table-body">
+                            <!-- Books will be dynamically added here -->
+                        </tbody>
+                    </table>
+                    <button class="btn btn-primary btn-sm">See All</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="total-books-template">
+        <div class="total-books-container">
+            <h1>Total Books</h1>
+            
+            <div class="books-section">
+                <h2>Frame</h2>
+                <div class="books-grid">
+                    <!-- Books will be dynamically added here -->
+                </div>
+            </div>
+            
+            <div class="books-section">
+                <h2>Frame</h2>
+                <div class="books-grid">
+                    <!-- More books will be dynamically added here -->
+                </div>
+            </div>
+            
+            <button class="btn btn-primary btn-add-book">
+                <img src="images/plus.svg" alt="Add">
+                Add Book
+            </button>
+        </div>
+    </template>
+
+    <template id="add-book-template">
+        <div class="add-book-container">
+            <h1>Add Books</h1>
+            
+            <form id="add-book-form">
+                <div class="form-group">
+                    <label for="book-title">Title:</label>
+                    <input type="text" id="book-title" placeholder="Enter the book title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="book-author">Author:</label>
+                    <input type="text" id="book-author" placeholder="Enter the author name" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="book-isbn">ISBN:</label>
+                        <input type="text" id="book-isbn" placeholder="Enter the ISBN" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-format">Format:</label>
+                        <div class="dropdown">
+                            <button type="button" class="dropdown-toggle">All</button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item">Online</div>
+                                <div class="dropdown-item">Physical</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="book-download-format">Download Format:</label>
+                        <input type="text" id="book-download-format" placeholder="Enter the downloading format">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-dmr">DMR Settings:</label>
+                        <input type="text" id="book-dmr" placeholder="Enter the DMR settings">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="book-license">License:</label>
+                    <input type="text" id="book-license" placeholder="Enter the license">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/reservation.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/librarian.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/chart.js"></script>
+    <script>
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
