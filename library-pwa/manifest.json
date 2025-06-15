@@ -88,14 +88,14 @@
   ],
   "screenshots": [
     {
-      "src": "images/screenshots/desktop-dashboard.png",
+      "src": "images/screenshots/index_html_2025-06-13_06-22-57_9219.webp",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
       "label": "Student Dashboard"
     },
     {
-      "src": "images/screenshots/mobile-dashboard.png",
+      "src": "images/screenshots/index_html_2025-06-13_06-24-04_4623.webp",
       "sizes": "375x667",
       "type": "image/png",
       "form_factor": "narrow",

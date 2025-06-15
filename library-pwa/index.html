@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#00C853">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div id="app">
@@ -20,7 +22,7 @@
         <div class="login-container">
             <div class="login-card">
                 <div class="logo">
-                    <span class="logo-icon">📚</span>
+                    <i class="fas fa-book-open logo-icon"></i>
                     <h1>Read Space</h1>
                 </div>
                 
@@ -43,7 +45,7 @@
                             <div class="password-input">
                                 <input type="password" id="password" placeholder="Enter your password" required>
                                 <button type="button" class="toggle-password">
-                                    <span>👁️</span>
+                                    <i class="fas fa-eye"></i>
                                 </button>
                             </div>
                             <a href="#" class="forgot-password">Forgot password?</a>
@@ -55,9 +57,9 @@
                     <div class="social-login">
                         <p>Or login with</p>
                         <div class="social-buttons">
-                            <button class="social-btn facebook">f</button>
-                            <button class="social-btn instagram">i</button>
-                            <button class="social-btn google">G</button>
+                            <button class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button class="social-btn instagram"><i class="fab fa-instagram"></i></button>
+                            <button class="social-btn google"><i class="fab fa-google"></i></button>
                         </div>
                     </div>
                 </div>
@@ -84,7 +86,7 @@
                             <div class="password-input">
                                 <input type="password" id="reg-password" placeholder="Create a password" required>
                                 <button type="button" class="toggle-password">
-                                    <span>👁️</span>
+                                    <i class="fas fa-eye"></i>
                                 </button>
                             </div>
                         </div>
@@ -95,13 +97,7 @@
             </div>
             
             <div class="login-illustration">
-                <div class="books-illustration">
-                    <span class="book-shape book1">📚</span>
-                    <span class="book-shape book2">📖</span>
-                    <span class="book-shape book3">📕</span>
-                    <span class="book-shape book4">📗</span>
-                    <span class="book-shape book5">📘</span>
-                </div>
+                <img src="images/loginpage-picture.avif" alt="Library Illustration" class="login-image">
             </div>
         </div>
     </template>
@@ -110,38 +106,38 @@
     <template id="sidebar-template">
         <div class="sidebar">
             <div class="logo">
-                <span class="logo-icon">📚</span>
+                <i class="fas fa-book-open logo-icon"></i>
                 <h1>Read Space</h1>
             </div>
             
             <nav class="sidebar-nav">
                 <ul>
                     <li data-page="dashboard" class="nav-item">
-                        <span>🏠</span>
+                        <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </li>
                     <li data-page="search-books" class="nav-item">
-                        <span>🔍</span>
+                        <i class="fas fa-search"></i>
                         <span>Search Books</span>
                     </li>
                     <li data-page="return-book" class="nav-item">
-                        <span>📙</span>
+                        <i class="fas fa-undo"></i>
                         <span>Return Book</span>
                     </li>
                     <li data-page="reserve-room" class="nav-item">
-                        <span>🏢</span>
+                        <i class="fas fa-calendar-plus"></i>
                         <span>Reserve Room</span>
                     </li>
                     <li data-page="update-profile" class="nav-item">
-                        <span>👤</span>
+                        <i class="fas fa-user-edit"></i>
                         <span>Update Profile</span>
                     </li>
                     <li data-page="settings" class="nav-item">
-                        <span>⚙️</span>
+                        <i class="fas fa-cog"></i>
                         <span>Settings</span>
                     </li>
                     <li data-page="logout" class="nav-item">
-                        <span>🚪</span>
+                        <i class="fas fa-sign-out-alt"></i>
                         <span>Log out</span>
                     </li>
                 </ul>
@@ -155,15 +151,15 @@
             <div class="dashboard-header">
                 <h1>Welcome, <span id="user-name">Student</span>!</h1>
                 <div class="header-actions">
-                    <button class="icon-btn">🔔</button>
-                    <button class="icon-btn">⚙️</button>
+                    <button class="icon-btn"><i class="fas fa-bell"></i></button>
+                    <button class="icon-btn"><i class="fas fa-cog"></i></button>
                 </div>
             </div>
             
             <div class="dashboard-grid">
                 <div class="quick-info-container">
                     <div class="quick-tip">
-                        <div class="quick-tip-icon">💡</div>
+                        <div class="quick-tip-icon"><i class="fas fa-lightbulb"></i></div>
                         <div class="quick-tip-content">
                             <h3>Quick Tip</h3>
                             <p>You can reserve study rooms up to 2 weeks in advance.</p>
@@ -171,7 +167,7 @@
                     </div>
                     
                     <div class="latest-activity">
-                        <div class="latest-activity-icon">📚</div>
+                        <div class="latest-activity-icon"><i class="fas fa-clock"></i></div>
                         <div class="latest-activity-content">
                             <h3>Latest Activity</h3>
                             <p>You borrowed "The Design of Everyday Things" yesterday.</p>
@@ -223,9 +219,9 @@
                     <div class="calendar-header">
                         <h2>Calendar</h2>
                         <div>
-                            <button class="calendar-nav">◀</button>
+                            <button class="calendar-nav"><i class="fas fa-chevron-left"></i></button>
                             <span id="calendar-month-year">June 2025</span>
-                            <button class="calendar-nav">▶</button>
+                            <button class="calendar-nav"><i class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
                     <div class="calendar-grid" id="calendar-grid">
@@ -267,7 +263,21 @@
                 
                 <div class="search-input-container">
                     <input type="text" id="search-input" placeholder="Type the name of book or Author...">
-                    <button class="search-btn">🔍</button>
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="books-section">
+                <h2>Database Books</h2>
+                <div class="books-grid" id="database-books">
+                    <!-- Books will be dynamically loaded here -->
+                </div>
+            </div>
+            
+            <div class="books-section">
+                <h2>Programming Books</h2>
+                <div class="books-grid" id="programming-books">
+                    <!-- Books will be dynamically loaded here -->
                 </div>
             </div>
             
@@ -306,14 +316,14 @@
         <div class="book-detail-container">
             <div class="back-button">
                 <button class="btn-back">
-                    <span>←</span>
+                    <i class="fas fa-arrow-left"></i>
                     <span>Back to results</span>
                 </button>
             </div>
             
             <div class="book-detail-content">
                 <div class="book-cover-container">
-                    <div class="book-detail-cover">📚</div>
+                    <div class="book-detail-cover"><i class="fas fa-book"></i></div>
                 </div>
                 
                 <div class="book-info-container">
@@ -367,7 +377,7 @@
                 
                 <div class="tab-content hidden" id="author-content">
                     <div class="author-info">
-                        <div class="author-image">👤</div>
+                        <div class="author-image"><i class="fas fa-user"></i></div>
                         <div class="author-details">
                             <h3 class="author-name">Author Name</h3>
                             <p class="author-bio">
@@ -462,7 +472,7 @@
     <template id="confirmation-template">
         <div class="confirmation-container">
             <div class="confirmation-icon">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/booking%20cofirmation-G9Rm5T5HXZXEdd9xhTcX1rroKra4oy.png" alt="Confirmation Check" style="width: 150px; height: 150px;">
+                <i class="fas fa-check-circle" style="font-size: 120px; color: var(--success-color);"></i>
             </div>
             <h1>Reservation Confirmed!</h1>
             <div class="confirmation-details">
@@ -505,7 +515,7 @@
                     <div class="password-input">
                         <input type="password" id="profile-password" value="••••••••" required>
                         <button type="button" class="toggle-password">
-                            <span>👁️</span>
+                            <i class="fas fa-eye"></i>
                         </button>
                     </div>
                 </div>
@@ -524,7 +534,7 @@
         <div class="confirmation-container">
             <h1 style="color: var(--primary-color);">The profile has been updated!</h1>
             <div class="confirmation-icon">
-                <span style="font-size: 120px; color: var(--primary-color);">✅</span>
+                <i class="fas fa-check-circle" style="font-size: 120px; color: var(--primary-color);"></i>
             </div>
             <button class="btn btn-primary" onclick="showPage('dashboard')">Back to Dashboard</button>
         </div>
@@ -536,28 +546,28 @@
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-icon">📚</div>
+                    <div class="stat-icon"><i class="fas fa-book"></i></div>
                     <div class="stat-info">
                         <h3>Total Books</h3>
                         <p class="stat-number" id="total-books-count">0</p>
                     </div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">📖</div>
+                    <div class="stat-icon"><i class="fas fa-book-open"></i></div>
                     <div class="stat-info">
                         <h3>Borrowed Books</h3>
                         <p class="stat-number" id="borrowed-books-count">0</p>
                     </div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">📝</div>
+                    <div class="stat-icon"><i class="fas fa-clipboard-list"></i></div>
                     <div class="stat-info">
                         <h3>Pending Requests</h3>
                         <p class="stat-number" id="pending-requests-count">0</p>
                     </div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">👥</div>
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
                     <div class="stat-info">
                         <h3>Total Members</h3>
                         <p class="stat-number" id="total-members-count">0</p>
@@ -594,7 +604,7 @@
         <div class="total-books-container">
             <div class="page-header">
                 <h1>Total Books</h1>
-                <button class="btn btn-primary" id="add-book-btn">+ Add Book</button>
+                <button class="btn btn-primary" id="add-book-btn"><i class="fas fa-plus"></i> Add Book</button>
             </div>
             
             <div class="books-grid" id="all-books-grid">
@@ -632,6 +642,8 @@
                             <option value="kids">Kids</option>
                             <option value="textbook">Textbook</option>
                             <option value="fiction">Fiction</option>
+                            <option value="database">Database</option>
+                            <option value="programming">Programming</option>
                         </select>
                     </div>
                 </div>
@@ -665,7 +677,7 @@
     <!-- New templates -->
     <template id="borrowed-book-template">
         <div class="borrowed-book-item">
-            <div class="book-cover">📚</div>
+            <div class="book-cover"><i class="fas fa-book"></i></div>
             <div class="book-info">
                 <h3 class="book-title"></h3>
                 <p class="book-author"></p>
